@@ -12,8 +12,8 @@ export default function App() {
     <View style={{ flex: 1 }}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="VideoList" component={VideoList} />
-          <Stack.Screen name="VideoPlayer" component={VideoPlayer} />
+          <Stack.Screen name="Video List" component={VideoList} />
+          <Stack.Screen name="Video Player" component={VideoPlayer} />
         </Stack.Navigator>
       </NavigationContainer>
       <Aboout />

@@ -1,27 +1,21 @@
-import { useState } from "react"
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import Video from "react-native-video"
+import { ResizeMode, Video } from "expo-av"
+import { useRef, useState } from "react"
+import { StyleSheet, TouchableOpacity, View } from "react-native"
 
 export const VideoPlayer = ({ route }) => {
-    const [pause, setPause] = useState(false)
-    // const [duration, setDuration] = useState(0)
-
-
-    // const onProgress = (data) => setDuration(data.duration)
-    const onPressPause = () => setPause(!pause)
+    const video = useRef(null)
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={onPressPause}>
-                {/* <Video // Constants issue
-                    source={{ uri: `${route.params.url}` }}
-                    pause={pause}
-                    // onLoad={onLoad}
-                    // onProgress={onProgress}
-                    repeat
-                /> */}
-                <Text>{route.params.url}</Text>
-            </TouchableOpacity>
+            <Video
+                ref={video}
+                style={{ height: 500, width: 350 }}
+                source={{ uri: `${route.params.url}` }}
+                useNativeControls
+                isLooping
+                resizeMode={ResizeMode.CONTAIN}
+                shouldPlay={true}
+            />
         </View>
     )
 }
